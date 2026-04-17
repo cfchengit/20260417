@@ -100,7 +100,14 @@ const formattedCountdown = computed(() => {
       <div class="form-inputs">
         <div class="input-group">
           <label>時間:</label>
-          <input type="text" v-model="formData.time" placeholder="例如: 10:00 - 12:00" />
+          <select v-model="formData.time">
+            <option value="" disabled>請選擇考試時間</option>
+            <option value="08:10 - 10:00 (第1-2節)">08:10 - 10:00 (第1-2節)</option>
+            <option value="10:10 - 12:00 (第3-4節)">10:10 - 12:00 (第3-4節)</option>
+            <option value="13:10 - 15:00 (第5-6節)">13:10 - 15:00 (第5-6節)</option>
+            <option value="15:10 - 17:00 (第7-8節)">15:10 - 17:00 (第7-8節)</option>
+            <option value="18:10 - 20:00 (夜間部)">18:10 - 20:00 (夜間部)</option>
+          </select>
         </div>
         <div class="input-group">
           <label>科目:</label>
@@ -236,13 +243,15 @@ ruby {
 }
 
 /* 表單輸入區域 */
-input {
+input, select {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
+  font-family: inherit;
+  background-color: #fff;
 }
 .time-input {
   width: 120px;
@@ -256,7 +265,7 @@ input {
   cursor: pointer;
   font-weight: bold;
 }
-.dark-theme input {
+.dark-theme input, .dark-theme select {
   background-color: #333;
   color: #fff;
   border-color: #555;
